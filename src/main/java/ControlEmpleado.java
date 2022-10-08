@@ -1,14 +1,11 @@
 
 import java.awt.HeadlessException;
-import java.awt.TextField;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +26,7 @@ public class ControlEmpleado {
     static Connection con = cnx.establecerConexion();
     
     
-    static List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+    
    
     public  void RegistrarEmpleado(Empleado emp){
         String sql = "INSERT INTO empleado VALUES(?,?,?,?,?,?);";
@@ -93,8 +90,6 @@ public class ControlEmpleado {
         
        
     }
-    
-    
     public void actualizarEmpleado(String cc,Empleado emp){
         String sql = "UPDATE empleado SET nombre=?,apellido=?,telefono=?,ciudad=?,direccion=? WHERE cc=?;";
         try{
@@ -125,16 +120,6 @@ public class ControlEmpleado {
                 tel.setText(rs.getString("telefono"));
                 ci.setText(rs.getString("ciudad"));
                 dir.setText(rs.getString("direccion"));
-                
-                /*System.out.println(
-                "EMPLEADO: "+
-                        "CC: "+rs.getString("cc")+
-                        "NOMBRE: "+rs.getString("nombre")+
-                        "APELLIDO: "+rs.getString("apellido")+
-                        "TELEFONO: "+rs.getString("telefono")+
-                        "CIUDAD: "+rs.getString("ciudad")+
-                        "DIRECCION: "+rs.getString("direccion")
-                );*/
             }
         }catch(SQLException e){
             e.printStackTrace();
